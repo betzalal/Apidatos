@@ -1,0 +1,9 @@
+node_modules
+data/
+data.db
+data.db-journal
+test_sales.js
+test_load.js
+test_req.js
+frontend/
+.env
