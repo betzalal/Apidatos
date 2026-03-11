@@ -7,7 +7,7 @@ services:
       dockerfile: Dockerfile
     container_name: jsonrec-backend
     ports:
-      - "4005:3000"
+      - "7005:3000"
     volumes:
       - sqlite_data:/usr/src/app/data
     restart: unless-stopped
@@ -20,7 +20,7 @@ services:
       dockerfile: Dockerfile
     container_name: jsonrec-frontend
     ports:
-      - "6005:80"
+      - "8005:80"
     depends_on:
       - jsonrec-backend
     restart: unless-stopped
