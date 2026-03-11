@@ -1,13 +1,18 @@
-FROM node:18-alpine
+# 1. Cambiamos a Node 20 para cumplir con el requisito de better-sqlite3
+FROM node:20-alpine
+
+# 2. Instalamos herramientas de compilación necesarias para módulos nativos
+RUN apk add --no-cache python3 make g++
+
 WORKDIR /usr/src/app
 
 COPY package*.json ./
-RUN npm install --production
+
+# 3. Instalamos dependencias (omitimos devDependencies para que pese menos)
+RUN npm install --omit=dev
 
 COPY . .
 
-# Exponer el puerto del Backend Node
 EXPOSE 3000
 
-# Arrancar el servidor
-CMD [ "node", "server.js" ]
+CMD ["node", "server.js"]
